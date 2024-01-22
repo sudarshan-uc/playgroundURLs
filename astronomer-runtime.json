@@ -8,16 +8,6 @@
     }
   },
   "runtimeVersions": {
-    "2.1.1": {
-      "metadata": {
-        "airflowVersion": "2.1.1",
-        "channel": "deprecated",
-        "releaseDate": "2021-07-20"
-      },
-      "migrations": {
-        "airflowDatabase": true
-      }
-    },
     "10.1.0": {
       "metadata": {
         "airflowVersion": "2.8.0",
