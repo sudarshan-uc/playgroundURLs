@@ -1,0 +1,47 @@
+{
+  "features": {
+    "stellar": {
+      "introducedVersion": "6.0.0"
+    },
+    "triggerer": {
+      "introducedVersion": "4.0.0"
+    }
+  },
+  "runtimeVersions": {
+    "2.1.1": {
+      "metadata": {
+        "airflowVersion": "2.1.1",
+        "channel": "deprecated",
+        "releaseDate": "2021-07-20"
+      },
+      "migrations": {
+        "airflowDatabase": true
+      }
+    },
+    "10.1.0": {
+      "metadata": {
+        "airflowVersion": "2.8.0",
+        "channel": "stable",
+        "releaseDate": "2024-01-10",
+        "endOfSupport": "2024-06-30"
+      },
+      "migrations": {
+        "airflowDatabase": false,
+        "stellarDatabase": false
+      }
+    },
+    "10.2.0": {
+      "metadata": {
+        "airflowVersion": "2.8.1",
+        "channel": "stable",
+        "releaseDate": "2024-01-19",
+        "endOfSupport": "2024-06-30"
+      },
+      "migrations": {
+        "airflowDatabase": true,
+        "stellarDatabase": false
+      }
+    }
+  },
+  "schemaVersion": "1.4"
+}
