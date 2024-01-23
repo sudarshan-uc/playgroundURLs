@@ -1,0 +1,1417 @@
+{
+  "version": "1.0",
+  "available_releases": [
+    {
+      "version": "1.10.5",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/1.10.5-11",
+      "release_date": "2020-10-05T20:03:00+00:00",
+      "tags": ["1.10.5-alpine3.10-onbuild", "1.10.5-buster-onbuild", "1.10.5-alpine3.10", "1.10.5-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.5-11",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/1.10.5-11",
+      "release_date": "2020-10-05T20:03:00+00:00",
+      "tags": ["1.10.5-11-alpine3.10-onbuild", "1.10.5-11-buster-onbuild", "1.10.5-11-alpine3.10", "1.10.5-11-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.7",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/1.10.7",
+      "release_date": "2019-12-20T20:03:00+00:00",
+      "tags": ["1.10.7-alpine3.10-onbuild", "1.10.7-buster-onbuild", "1.10.7-alpine3.10", "1.10.7-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.7-7",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.7%2Bastro.7",
+      "release_date": "2020-03-12T20:03:00+00:00",
+      "tags": ["1.10.7-7-alpine3.10-onbuild", "1.10.7-7-buster-onbuild", "1.10.7-7-alpine3.10", "1.10.7-7-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.7-8",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.7%2Bastro.8",
+      "release_date": "2020-04-11T14:23:00+00:00",
+      "tags": ["1.10.7-8-alpine3.10-onbuild", "1.10.7-8-buster-onbuild", "1.10.7-8-alpine3.10", "1.10.7-8-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.7-10",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.7%2Bastro.10",
+      "release_date": "2020-04-29T15:09:00+00:00",
+      "tags": ["1.10.7-10-alpine3.10-onbuild", "1.10.7-10-buster-onbuild", "1.10.7-10-alpine3.10", "1.10.7-10-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.7-11",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.7%2Bastro.11",
+      "release_date": "2020-05-28T20:25:00+00:00",
+      "tags": ["1.10.7-11-alpine3.10-onbuild", "1.10.7-11-buster-onbuild", "1.10.7-11-alpine3.10", "1.10.7-11-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.7-12",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.7%2Bastro.12",
+      "release_date": "2020-06-03T19:39:00+00:00",
+      "tags": ["1.10.7-12-alpine3.10-onbuild", "1.10.7-12-buster-onbuild", "1.10.7-12-alpine3.10", "1.10.7-12-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.7-13",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.7%2Bastro.13",
+      "release_date": "2020-06-18T18:58:00+00:00",
+      "tags": ["1.10.7-13-alpine3.10-onbuild", "1.10.7-13-buster-onbuild", "1.10.7-13-alpine3.10", "1.10.7-13-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.7-14",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.7%2Bastro.14",
+      "release_date": "2020-08-04T20:32:00+00:00",
+      "tags": ["1.10.7-14-alpine3.10-onbuild", "1.10.7-14-buster-onbuild", "1.10.7-14-alpine3.10", "1.10.7-14-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.7-15",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.7%2Bastro.15",
+      "release_date": "2020-09-22T15:52:00+00:00",
+      "tags": ["1.10.7-15-alpine3.10-onbuild", "1.10.7-15-buster-onbuild", "1.10.7-15-alpine3.10", "1.10.7-15-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.7-16",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.7%2Bastro.16",
+      "release_date": "2020-12-10T11:40:00+00:00",
+      "tags": ["1.10.7-16-alpine3.10-onbuild", "1.10.7-16-buster-onbuild", "1.10.7-16-alpine3.10", "1.10.7-16-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.7-17",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.7%2Bastro.17",
+      "release_date": "2021-01-05T23:30:00+00:00",
+      "tags": ["1.10.7-17-buster-onbuild", "1.10.7-17-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.7-18",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.7%2Bastro.18",
+      "release_date": "2021-04-27T22:30:00+00:00",
+      "tags": ["1.10.7-18-buster-onbuild", "1.10.7-18-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.7-19",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.7%2Bastro.19",
+      "release_date": "2021-07-27T12:55:00+00:00",
+      "tags": ["1.10.7-19-buster-onbuild", "1.10.7-19-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.10",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.10%2Bastro.1",
+      "release_date": "2020-04-22T17:46:00+00:00",
+      "tags": ["1.10.10-alpine3.10-onbuild", "1.10.10-buster-onbuild", "1.10.10-alpine3.10", "1.10.10-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.10-1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.10%2Bastro.1",
+      "release_date": "2020-04-22T17:46:00+00:00",
+      "tags": ["1.10.10-1-alpine3.10-onbuild", "1.10.10-1-buster-onbuild", "1.10.10-1-alpine3.10", "1.10.10-1-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.10-2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.10%2Bastro.2",
+      "release_date": "2020-06-03T19:23:00+00:00",
+      "tags": ["1.10.10-2-alpine3.10-onbuild", "1.10.10-2-buster-onbuild", "1.10.10-2-alpine3.10", "1.10.10-2-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.10-3",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.10%2Bastro.3",
+      "release_date": "2020-06-17T23:00:00+00:00",
+      "tags": ["1.10.10-3-alpine3.10-onbuild", "1.10.10-3-buster-onbuild", "1.10.10-3-alpine3.10", "1.10.10-3-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.10-4",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.10%2Bastro.4",
+      "release_date": "2020-08-04T19:54:00+00:00",
+      "tags": ["1.10.10-4-alpine3.10-onbuild", "1.10.10-4-buster-onbuild", "1.10.10-4-alpine3.10", "1.10.10-4-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.10-5",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.10%2Bastro.5",
+      "release_date": "2020-09-16T21:47:00+00:00",
+      "tags": ["1.10.10-5-alpine3.10-onbuild", "1.10.10-5-buster-onbuild", "1.10.10-5-alpine3.10", "1.10.10-5-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.10-6",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.10%2Bastro.6",
+      "release_date": "2020-12-10T11:40:00+00:00",
+      "tags": ["1.10.10-6-alpine3.10-onbuild", "1.10.10-6-buster-onbuild", "1.10.10-6-alpine3.10", "1.10.10-6-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.10-7",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.10%2Bastro.7",
+      "release_date": "2021-01-05T23:30:00+00:00",
+      "tags": ["1.10.10-7-buster-onbuild", "1.10.10-7-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.10-8",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.10%2Bastro.8",
+      "release_date": "2021-04-27T22:30:00+00:00",
+      "tags": ["1.10.10-8-buster-onbuild", "1.10.10-8-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.10-9",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.10%2Bastro.9",
+      "release_date": "2021-07-27T12:55:00+00:00",
+      "tags": ["1.10.10-9-buster-onbuild", "1.10.10-9-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.10-10",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.10%2Bastro.10",
+      "release_date": "2021-09-24T22:20:00+00:00",
+      "tags": ["1.10.10-10-buster-onbuild", "1.10.10-10-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.12",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.12%2Bastro.1",
+      "release_date": "2020-09-29T22:15:00+00:00",
+      "tags": ["1.10.12-alpine3.10-onbuild", "1.10.12-buster-onbuild", "1.10.12-alpine3.10", "1.10.12-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.12-1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.12%2Bastro.1",
+      "release_date": "2020-09-29T22:15:00+00:00",
+      "tags": ["1.10.12-1-alpine3.10-onbuild", "1.10.12-1-buster-onbuild", "1.10.12-1-alpine3.10", "1.10.12-1-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.12-2",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.12%2Bastro.2",
+      "release_date": "2020-12-04T21:00:00+00:00",
+      "tags": ["1.10.12-2-alpine3.10-onbuild", "1.10.12-2-buster-onbuild", "1.10.12-2-alpine3.10", "1.10.12-2-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.12-3",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.12%2Bastro.3",
+      "release_date": "2021-01-05T23:30:00+00:00",
+      "tags": ["1.10.12-3-alpine3.10-onbuild", "1.10.12-3-alpine3.10", "1.10.12-3-buster-onbuild", "1.10.12-3-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.12-4",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.12%2Bastro.4",
+      "release_date": "2021-03-18T23:37:00+00:00",
+      "tags": ["1.10.12-4-alpine3.10-onbuild", "1.10.12-4-alpine3.10", "1.10.12-4-buster-onbuild", "1.10.12-4-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.12-5",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.12%2Bastro.5",
+      "release_date": "2021-07-27T12:55:00+00:00",
+      "tags": ["1.10.12-5-buster-onbuild", "1.10.12-5-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.12-6",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.12%2Bastro.6",
+      "release_date": "2021-09-24T22:20:00+00:00",
+      "tags": ["1.10.12-6-buster-onbuild", "1.10.12-6-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.14",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.14%2Bastro.1",
+      "release_date": "2020-12-11T21:00:50+00:00",
+      "tags": ["1.10.14-buster-onbuild", "1.10.14-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.14-1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.14%2Bastro.1",
+      "release_date": "2020-12-11T21:00:50+00:00",
+      "tags": ["1.10.14-1-buster-onbuild", "1.10.14-1-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.14-2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.14%2Bastro.2",
+      "release_date": "2021-01-05T23:30:00+00:00",
+      "tags": ["1.10.14-2-buster-onbuild", "1.10.14-2-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.14-3",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.14%2Bastro.3",
+      "release_date": "2021-03-18T23:36:00+00:00",
+      "tags": ["1.10.14-3-buster-onbuild", "1.10.14-3-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.14-4",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.14%2Bastro.4",
+      "release_date": "2021-07-27T12:55:00+00:00",
+      "tags": ["1.10.14-4-buster-onbuild", "1.10.14-4-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.14-5",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.14%2Bastro.5",
+      "release_date": "2021-09-24T22:20:00+00:00",
+      "tags": ["1.10.14-5-buster-onbuild", "1.10.14-5-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.15",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.15%2Bastro.1",
+      "release_date": "2021-03-19T20:00:00+00:00",
+      "tags": ["1.10.15-buster-onbuild", "1.10.15-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.15-1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.15%2Bastro.1",
+      "release_date": "2021-03-19T20:00:00+00:00",
+      "tags": ["1.10.15-1-buster-onbuild", "1.10.15-1-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.15-2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.15%2Bastro.2",
+      "release_date": "2021-06-04T20:00:00+00:00",
+      "tags": ["1.10.15-2-buster-onbuild", "1.10.15-2-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.15-3",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.15%2Bastro.3",
+      "release_date": "2021-07-14T17:30:00+00:00",
+      "tags": ["1.10.15-3-buster-onbuild", "1.10.15-3-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.15-4",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.15%2Bastro.4",
+      "release_date": "2021-09-24T22:20:00+00:00",
+      "tags": ["1.10.15-4-buster-onbuild", "1.10.15-4-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.15-5",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.15%2Bastro.5",
+      "release_date": "2022-02-24T21:30:00+00:00",
+      "tags": ["1.10.15-5-buster-onbuild", "1.10.15-5-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.15-6",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.15%2Bastro.6",
+      "release_date": "2022-02-25T23:00:00+00:00",
+      "tags": ["1.10.15-6-buster-onbuild", "1.10.15-6-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.15-7",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.15%2Bastro.7",
+      "release_date": "2022-04-04T17:00:00+00:00",
+      "tags": ["1.10.15-7-buster-onbuild", "1.10.15-7-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.15-8",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.15%2Bastro.8",
+      "release_date": "2022-06-22T17:00:00+00:00",
+      "tags": ["1.10.15-8-buster-onbuild", "1.10.15-8-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "1.10.15-9",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v1.10.15%2Bastro.9",
+      "release_date": "2022-07-22T20:00:00+00:00",
+      "tags": ["1.10.15-9-buster-onbuild", "1.10.15-9-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.0",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.0%2Bastro.1",
+      "release_date": "2020-12-17T17:30:50+00:00",
+      "tags": ["2.0.0-buster-onbuild", "2.0.0-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.0-1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.0%2Bastro.1",
+      "release_date": "2020-12-17T17:30:50+00:00",
+      "tags": ["2.0.0-1-buster-onbuild", "2.0.0-1-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.0-2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.0%2Bastro.2",
+      "release_date": "2020-12-23T19:30:00+00:00",
+      "tags": ["2.0.0-2-buster-onbuild", "2.0.0-2-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.0-3",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.0%2Bastro.3",
+      "release_date": "2021-02-16T23:34:00+00:00",
+      "tags": ["2.0.0-3-buster-onbuild", "2.0.0-3-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.0-4",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.0%2Bastro.4",
+      "release_date": "2021-04-13T00:15:00+00:00",
+      "tags": ["2.0.0-4-buster-onbuild", "2.0.0-4-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.0-5",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.0%2Bastro.5",
+      "release_date": "2021-04-26T20:10:00+00:00",
+      "tags": ["2.0.0-5-buster-onbuild", "2.0.0-5-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.0-6",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.0%2Bastro.6",
+      "release_date": "2021-05-12T20:00:00+00:00",
+      "tags": ["2.0.0-6-buster-onbuild", "2.0.0-6-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.0-7",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.0%2Bastro.7",
+      "release_date": "2021-06-04T20:00:00+00:00",
+      "tags": ["2.0.0-7-buster-onbuild", "2.0.0-7-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.0-8",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.0%2Bastro.8",
+      "release_date": "2021-07-13T10:00:00+00:00",
+      "tags": ["2.0.0-8-buster-onbuild", "2.0.0-8-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.0-9",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.0%2Bastro.9",
+      "release_date": "2021-09-09T10:30:00+00:00",
+      "tags": ["2.0.0-9-buster-onbuild", "2.0.0-9-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.0-10",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.0%2Bastro.10",
+      "release_date": "2021-09-24T22:20:00+00:00",
+      "tags": ["2.0.0-10-buster-onbuild", "2.0.0-10-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.2",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.2%2Bastro.1",
+      "release_date": "2021-04-26T23:15:00+00:00",
+      "tags": ["2.0.2-buster-onbuild", "2.0.2-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.2-1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.2%2Bastro.1",
+      "release_date": "2021-04-26T23:15:00+00:00",
+      "tags": ["2.0.2-1-buster-onbuild", "2.0.2-1-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.2-2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.2%2Bastro.2",
+      "release_date": "2021-05-12T20:00:00+00:00",
+      "tags": ["2.0.2-2-buster-onbuild", "2.0.2-2-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.2-3",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.2%2Bastro.3",
+      "release_date": "2021-06-03T21:00:00+00:00",
+      "tags": ["2.0.2-3-buster-onbuild", "2.0.2-3-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.2-4",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.2%2Bastro.4",
+      "release_date": "2021-07-13T10:00:00+00:00",
+      "tags": ["2.0.2-4-buster-onbuild", "2.0.2-4-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.2-5",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.2%2Bastro.5",
+      "release_date": "2021-09-09T10:30:00+00:00",
+      "tags": ["2.0.2-5-buster-onbuild", "2.0.2-5-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.0.2-6",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.0.2%2Bastro.6",
+      "release_date": "2021-09-24T22:20:00+00:00",
+      "tags": ["2.0.2-6-buster-onbuild", "2.0.2-6-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.0",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.0%2Bastro.1",
+      "release_date": "2021-05-21T23:15:00+00:00",
+      "tags": ["2.1.0-buster-onbuild", "2.1.0-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.0-1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.0%2Bastro.1",
+      "release_date": "2021-05-21T23:15:00+00:00",
+      "tags": ["2.1.0-1-buster-onbuild", "2.1.0-1-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.0-2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.0%2Bastro.2",
+      "release_date": "2021-06-03T19:00:00+00:00",
+      "tags": ["2.1.0-2-buster-onbuild", "2.1.0-2-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.0-3",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.0%2Bastro.3",
+      "release_date": "2021-07-13T10:00:00+00:00",
+      "tags": ["2.1.0-3-buster-onbuild", "2.1.0-3-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.0-4",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.0%2Bastro.4",
+      "release_date": "2021-09-09T10:30:00+00:00",
+      "tags": ["2.1.0-4-buster-onbuild", "2.1.0-4-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.0-5",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.0%2Bastro.5",
+      "release_date": "2021-09-24T22:20:00+00:00",
+      "tags": ["2.1.0-5-buster-onbuild", "2.1.0-5-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.0-6",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.0%2Bastro.6",
+      "release_date": "2021-11-13T21:45:00+00:00",
+      "tags": ["2.1.0-6-buster-onbuild", "2.1.0-6-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.0-7",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.0%2Bastro.7",
+      "release_date": "2022-01-19T20:30:00+00:00",
+      "tags": ["2.1.0-7-buster-onbuild", "2.1.0-7-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.1%2Bastro.1",
+      "release_date": "2021-07-02T22:20:00+00:00",
+      "tags": ["2.1.1-buster-onbuild", "2.1.1-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.1-1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.1%2Bastro.1",
+      "release_date": "2021-07-02T22:20:00+00:00",
+      "tags": ["2.1.1-1-buster-onbuild", "2.1.1-1-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.1-2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.1%2Bastro.2",
+      "release_date": "2021-07-13T10:00:00+00:00",
+      "tags": ["2.1.1-2-buster-onbuild", "2.1.1-2-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.1-3",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.1%2Bastro.3",
+      "release_date": "2021-09-09T10:30:00+00:00",
+      "tags": ["2.1.1-3-buster-onbuild", "2.1.1-3-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.1-4",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.1%2Bastro.4",
+      "release_date": "2021-09-24T22:20:00+00:00",
+      "tags": ["2.1.1-4-buster-onbuild", "2.1.1-4-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.1-5",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.1%2Bastro.5",
+      "release_date": "2021-11-13T21:45:00+00:00",
+      "tags": ["2.1.1-5-buster-onbuild", "2.1.1-5-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.1-6",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.1%2Bastro.6",
+      "release_date": "2022-01-19T20:30:00+00:00",
+      "tags": ["2.1.1-6-buster-onbuild", "2.1.1-6-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.3",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.3%2Bastro.1",
+      "release_date": "2021-08-23T23:50:00+00:00",
+      "tags": ["2.1.3-buster-onbuild", "2.1.3-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.3-1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.3%2Bastro.1",
+      "release_date": "2021-08-23T23:50:00+00:00",
+      "tags": ["2.1.3-1-buster-onbuild", "2.1.3-1-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.3-2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.3%2Bastro.2",
+      "release_date": "2021-09-24T22:20:00+00:00",
+      "tags": ["2.1.3-2-buster-onbuild", "2.1.3-2-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.3-3",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.3%2Bastro.3",
+      "release_date": "2021-11-13T21:45:00+00:00",
+      "tags": ["2.1.3-3-buster-onbuild", "2.1.3-3-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.3-4",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.3%2Bastro.4",
+      "release_date": "2022-01-19T20:30:00+00:00",
+      "tags": ["2.1.3-4-buster-onbuild", "2.1.3-4-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.4",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.4%2Bastro.1",
+      "release_date": "2021-09-18T23:50:00+00:00",
+      "tags": ["2.1.4-buster-onbuild", "2.1.4-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.4-1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.4%2Bastro.1",
+      "release_date": "2021-09-18T23:50:00+00:00",
+      "tags": ["2.1.4-1-buster-onbuild", "2.1.4-1-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.4-2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.4%2Bastro.2",
+      "release_date": "2021-09-24T22:20:00+00:00",
+      "tags": ["2.1.4-2-buster-onbuild", "2.1.4-2-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.4-3",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.4%2Bastro.3",
+      "release_date": "2021-11-05T17:40:00+00:00",
+      "tags": ["2.1.4-3-buster-onbuild", "2.1.4-3-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.4-4",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.4%2Bastro.4",
+      "release_date": "2022-01-19T20:30:00+00:00",
+      "tags": ["2.1.4-4-buster-onbuild", "2.1.4-4-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.4-5",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.4%2Bastro.5",
+      "release_date": "2022-02-24T21:30:00+00:00",
+      "tags": ["2.1.4-5-buster-onbuild", "2.1.4-5-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.4-6",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.4%2Bastro.6",
+      "release_date": "2022-02-25T23:00:00+00:00",
+      "tags": ["2.1.4-6-buster-onbuild", "2.1.4-6-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.4-7",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.4%2Bastro.7",
+      "release_date": "2022-04-04T17:00:00+00:00",
+      "tags": ["2.1.4-7-buster-onbuild", "2.1.4-7-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.4-8",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.4%2Bastro.8",
+      "release_date": "2022-06-22T17:00:00+00:00",
+      "tags": ["2.1.4-8-buster-onbuild", "2.1.4-8-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.4-9",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.4%2Bastro.9",
+      "release_date": "2022-07-22T20:00:00+00:00",
+      "tags": ["2.1.4-9-buster-onbuild", "2.1.4-9-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.1.4-10",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.1.4%2Bastro.10",
+      "release_date": "2022-11-09T18:00:00+00:00",
+      "tags": ["2.1.4-10-buster-onbuild", "2.1.4-10-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.0",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.0%2Bastro.2",
+      "release_date": "2021-10-14T12:46:00+00:00",
+      "tags": ["2.2.0-buster-onbuild", "2.2.0-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.0-1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.0%2Bastro.1",
+      "release_date": "2021-10-11T23:50:00+00:00",
+      "tags": ["2.2.0-1-buster-onbuild", "2.2.0-1-buster"],
+      "channel": "unstable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.0-2",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.0%2Bastro.2",
+      "release_date": "2021-10-14T12:46:00+00:00",
+      "tags": ["2.2.0-2-buster-onbuild", "2.2.0-2-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.0-3",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.0%2Bastro.3",
+      "release_date": "2021-11-02T20:45:00+00:00",
+      "tags": ["2.2.0-3-buster-onbuild", "2.2.0-3-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.0-4",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.0%2Bastro.4",
+      "release_date": "2021-11-05T17:40:00+00:00",
+      "tags": ["2.2.0-4-buster-onbuild", "2.2.0-4-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.0-5",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.0%2Bastro.5",
+      "release_date": "2022-01-19T20:30:00+00:00",
+      "tags": ["2.2.0-5-buster-onbuild", "2.2.0-5-buster"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.1%2Bastro.1",
+      "release_date": "2021-11-02T11:50:00+00:00",
+      "tags": ["2.2.1-onbuild", "2.2.1"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.1-1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.1%2Bastro.1",
+      "release_date": "2021-11-02T11:50:00+00:00",
+      "tags": ["2.2.1-1-onbuild", "2.2.1-1"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.1-2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.1%2Bastro.2",
+      "release_date": "2021-11-05T17:40:00+00:00",
+      "tags": ["2.2.1-2-onbuild", "2.2.1-2"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.1-3",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.1%2Bastro.3",
+      "release_date": "2022-01-19T20:30:00+00:00",
+      "tags": ["2.2.1-3-onbuild", "2.2.1-3"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.2%2Bastro.1",
+      "release_date": "2021-11-16T06:00:00+00:00",
+      "tags": ["2.2.2-onbuild", "2.2.2"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.2-1",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.2%2Bastro.1",
+      "release_date": "2021-11-16T06:00:00+00:00",
+      "tags": ["2.2.2-1-onbuild", "2.2.2-1"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.2-2",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.2%2Bastro.2",
+      "release_date": "2022-01-19T20:30:00+00:00",
+      "tags": ["2.2.2-2-onbuild", "2.2.2-2"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.3",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.3%2Bastro.1",
+      "release_date": "2021-12-21T21:00:00+00:00",
+      "tags": ["2.2.3-onbuild", "2.2.3"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.3-1",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.3%2Bastro.1",
+      "release_date": "2021-12-21T21:00:00+00:00",
+      "tags": ["2.2.3-1-onbuild", "2.2.3-1"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.3-2",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.3%2Bastro.2",
+      "release_date": "2022-01-19T20:30:00+00:00",
+      "tags": ["2.2.3-2-onbuild", "2.2.3-2"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.4",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.4%2Bastro.1",
+      "release_date": "2022-02-22T23:30:00+00:00",
+      "tags": ["2.2.4-onbuild", "2.2.4"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.4-1",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.4%2Bastro.1",
+      "release_date": "2022-02-22T23:30:00+00:00",
+      "tags": ["2.2.4-1-onbuild", "2.2.4-1"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.4-2",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.4%2Bastro.2",
+      "release_date": "2022-02-25T23:00:00+00:00",
+      "tags": ["2.2.4-2-onbuild", "2.2.4-2"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.4-3",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.4%2Bastro.3",
+      "release_date": "2022-03-07T22:00:00+00:00",
+      "tags": ["2.2.4-3-onbuild", "2.2.4-3"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.4-4",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.4%2Bastro.4",
+      "release_date": "2022-04-04T17:00:00+00:00",
+      "tags": ["2.2.4-4-onbuild", "2.2.4-4"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.5",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.5%2Bastro.1",
+      "release_date": "2022-04-04T20:00:00+00:00",
+      "tags": ["2.2.5-onbuild", "2.2.5"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.5-1",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.5%2Bastro.1",
+      "release_date": "2022-04-04T20:00:00+00:00",
+      "tags": ["2.2.5-1-onbuild", "2.2.5-1"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.5-2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.5%2Bastro.2",
+      "release_date": "2022-04-06T18:00:00+00:00",
+      "tags": ["2.2.5-2-onbuild", "2.2.5-2"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.2.5-3",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.2.5%2Bastro.3",
+      "release_date": "2022-06-22T17:00:00+00:00",
+      "tags": ["2.2.5-3-onbuild", "2.2.5-3"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.3.0",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.0%2Bastro.1",
+      "release_date": "2022-04-30T23:15:00+00:00",
+      "tags": ["2.3.0-onbuild", "2.3.0"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.3.0-1",
+      "level": "new_feature",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.0%2Bastro.1",
+      "release_date": "2022-04-30T23:15:00+00:00",
+      "tags": ["2.3.0-1-onbuild", "2.3.0-1"],
+      "channel": "unstable",
+      "deprecated": true
+    },
+    {
+      "version": "2.3.0-2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.0%2Bastro.2",
+      "release_date": "2022-05-02T18:00:00+00:00",
+      "tags": ["2.3.0-2-onbuild", "2.3.0-2"],
+      "channel": "unstable",
+      "deprecated": true
+    },
+    {
+      "version": "2.3.0-3",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.0%2Bastro.3",
+      "release_date": "2022-05-03T20:30:00+00:00",
+      "tags": ["2.3.0-3-onbuild", "2.3.0-3"],
+      "channel": "unstable",
+      "deprecated": true
+    },
+    {
+      "version": "2.3.0-5",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.0%2Bastro.5",
+      "release_date": "2022-05-18T14:45:00+00:00",
+      "tags": ["2.3.0-5-onbuild", "2.3.0-5"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.3.1",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.1%2Bastro.1",
+      "release_date": "2022-05-25T20:00:00+00:00",
+      "tags": ["2.3.1-onbuild", "2.3.1"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.3.1-1",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.1%2Bastro.1",
+      "release_date": "2022-05-25T20:00:00+00:00",
+      "tags": ["2.3.1-1-onbuild", "2.3.1-1"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.3.2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.2%2Bastro.1",
+      "release_date": "2022-06-04T21:30:00+00:00",
+      "tags": ["2.3.2-onbuild", "2.3.2"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.3.2-1",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.2%2Bastro.1",
+      "release_date": "2022-06-04T21:30:00+00:00",
+      "tags": ["2.3.2-1-onbuild", "2.3.2-1"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.3.2-2",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.2%2Bastro.2",
+      "release_date": "2022-06-22T17:00:00+00:00",
+      "tags": ["2.3.2-2-onbuild", "2.3.2-2"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.3.3",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.3%2Bastro.1",
+      "release_date": "2022-07-11T19:20:00+00:00",
+      "tags": ["2.3.3-onbuild", "2.3.3"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.3.3-1",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.3%2Bastro.1",
+      "release_date": "2022-07-11T19:20:00+00:00",
+      "tags": ["2.3.3-1-onbuild", "2.3.3-1"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.3.3-2",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.3%2Bastro.2",
+      "release_date": "2022-08-16T15:30:00+00:00",
+      "tags": ["2.3.3-2-onbuild", "2.3.3-2"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.3.4",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.4%2Bastro.1",
+      "release_date": "2022-08-25T18:30:00+00:00",
+      "tags": ["2.3.4-onbuild", "2.3.4"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.3.4-1",
+      "level": "bug_fix",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.4%2Bastro.1",
+      "release_date": "2022-08-25T18:30:00+00:00",
+      "tags": ["2.3.4-1-onbuild", "2.3.4-1"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.3.4-2",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.4%2Bastro.2",
+      "release_date": "2022-09-21T17:45:00+00:00",
+      "tags": ["2.3.4-2-onbuild", "2.3.4-2"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.3.4-3",
+      "level": "critical",
+      "url": "https://github.com/astronomer/airflow/releases/tag/v2.3.4%2Bastro.3",
+      "release_date": "2022-10-06T18:30:00+00:00",
+      "tags": ["2.3.4-3-onbuild", "2.3.4-3"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.3.4-4",
+      "level": "bug_fix",
+      "url": "",
+      "release_date": "2022-10-17T16:30:00+00:00",
+      "tags": ["2.3.4-4-onbuild", "2.3.4-4"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.3.4-5",
+      "level": "bug_fix",
+      "url": "",
+      "release_date": "2022-10-28T20:30:00+00:00",
+      "tags": ["2.3.4-5-onbuild", "2.3.4-5"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.3.4-6",
+      "level": "critical",
+      "url": "",
+      "release_date": "2022-11-09T18:00:00+00:00",
+      "tags": ["2.3.4-6-onbuild", "2.3.4-6"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.3.4-7",
+      "level": "critical",
+      "url": "",
+      "release_date": "2022-12-21T18:30:00+00:00",
+      "tags": ["2.3.4-7-onbuild", "2.3.4-7"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.3.4-8",
+      "level": "critical",
+      "url": "",
+      "release_date": "2023-01-26T18:30:00+00:00",
+      "tags": ["2.3.4-8-onbuild", "2.3.4-8"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.3.4-9",
+      "level": "bug_fix",
+      "url": "",
+      "release_date": "2023-01-26T23:00:00+00:00",
+      "tags": ["2.3.4-9-onbuild", "2.3.4-9"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.3.4-10",
+      "level": "critical",
+      "url": "",
+      "release_date": "2023-02-14T18:30:00+00:00",
+      "tags": ["2.3.4-10-onbuild", "2.3.4-10"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.3.4-11",
+      "level": "critical",
+      "url": "",
+      "release_date": "2023-03-31T17:15:00+00:00",
+      "tags": ["2.3.4-11-onbuild", "2.3.4-11"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.4.1",
+      "level": "bug_fix",
+      "url": "",
+      "release_date": "2022-09-30T23:00:00+00:00",
+      "tags": ["2.4.1-onbuild", "2.4.1"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.4.1-1",
+      "level": "bug_fix",
+      "url": "",
+      "release_date": "2022-09-30T23:00:00+00:00",
+      "tags": ["2.4.1-1-onbuild", "2.4.1-1"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.4.2",
+      "level": "bug_fix",
+      "url": "",
+      "release_date": "2022-10-24T14:00:00+00:00",
+      "tags": ["2.4.2-onbuild", "2.4.2"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.4.2-1",
+      "level": "bug_fix",
+      "url": "",
+      "release_date": "2022-10-24T14:00:00+00:00",
+      "tags": ["2.4.2-1-onbuild", "2.4.2-1"],
+      "channel": "stable",
+      "deprecated": true
+    },
+    {
+      "version": "2.4.3",
+      "level": "critical",
+      "url": "",
+      "release_date": "2022-11-14T17:00:00+00:00",
+      "tags": ["2.4.3-onbuild", "2.4.3"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.4.3-1",
+      "level": "critical",
+      "url": "",
+      "release_date": "2022-11-14T17:00:00+00:00",
+      "tags": ["2.4.3-1-onbuild", "2.4.3-1"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.4.3-2",
+      "level": "critical",
+      "url": "",
+      "release_date": "2022-12-21T18:30:00+00:00",
+      "tags": ["2.4.3-2-onbuild", "2.4.3-2"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.4.3-3",
+      "level": "critical",
+      "url": "",
+      "release_date": "2023-01-26T18:30:00+00:00",
+      "tags": ["2.4.3-3-onbuild", "2.4.3-3"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.4.3-4",
+      "level": "bug_fix",
+      "url": "",
+      "release_date": "2023-01-26T23:00:00+00:00",
+      "tags": ["2.4.3-4-onbuild", "2.4.3-4"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.4.3-5",
+      "level": "critical",
+      "url": "",
+      "release_date": "2023-02-14T18:30:00+00:00",
+      "tags": ["2.4.3-5-onbuild", "2.4.3-5"],
+      "channel": "stable"
+    },
+    {
+      "version": "2.4.3-6",
+      "level": "critical",
+      "url": "",
+      "release_date": "2023-03-31T17:15:00+00:00",
+      "tags": ["2.4.3-6-onbuild", "2.4.3-6"],
+      "channel": "stable"
+    }
+  ]
+}
