@@ -168,6 +168,6 @@
       "tags": ["2.4.3-3-build", "2.4.3-3"],
       "channel": "stable",
       "deprecated": true
-    },
+    }
   ]
 }
