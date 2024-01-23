@@ -1363,7 +1363,8 @@
       "url": "",
       "release_date": "2022-11-14T17:00:00+00:00",
       "tags": ["2.4.3-onbuild", "2.4.3"],
-      "channel": "stable"
+      "channel": "stable",
+      "deprecated": true
     },
     {
       "version": "2.4.3-1",
