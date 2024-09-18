@@ -15,28 +15,48 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-"""
-Example DAG demonstrating ``TimeDeltaSensorAsync``, a drop in replacement for ``TimeDeltaSensor`` that
-defers and doesn't occupy a worker slot while it waits
-"""
+"""Example DAG demonstrating the usage of the SubDagOperator."""
 
 from __future__ import annotations
 
+# [START example_subdag_operator]
 import datetime
 
-import pendulum
-
+from airflow.example_dags.subdags.subdag import subdag
 from airflow.models.dag import DAG
 from airflow.operators.empty import EmptyOperator
-from airflow.sensors.time_delta import TimeDeltaSensorAsync
+from airflow.operators.subdag import SubDagOperator
+
+DAG_NAME = "example_subdag_operator"
 
 with DAG(
-    dag_id="example_time_delta_sensor_async",
-    schedule=None,
-    start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
-    catchup=False,
+    dag_id=DAG_NAME,
+    default_args={"retries": 2},
+    start_date=datetime.datetime(2022, 1, 1),
+    schedule="@once",
     tags=["example"],
 ) as dag:
-    wait = TimeDeltaSensorAsync(task_id="wait", delta=datetime.timedelta(seconds=30))
-    finish = EmptyOperator(task_id="finish")
-    wait >> finish
+    start = EmptyOperator(
+        task_id="start",
+    )
+
+    section_1 = SubDagOperator(
+        task_id="section-1",
+        subdag=subdag(DAG_NAME, "section-1", dag.default_args),
+    )
+
+    some_other_task = EmptyOperator(
+        task_id="some-other-task",
+    )
+
+    section_2 = SubDagOperator(
+        task_id="section-2",
+        subdag=subdag(DAG_NAME, "section-2", dag.default_args),
+    )
+
+    end = EmptyOperator(
+        task_id="end",
+    )
+
+    start >> section_1 >> some_other_task >> section_2 >> end
+# [END example_subdag_operator]
