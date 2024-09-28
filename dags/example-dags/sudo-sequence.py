@@ -1,5 +1,8 @@
 from airflow import DAG
 from airflow.operators.bash import BashOperator
+from airflow.operators.python import BranchPythonOperator
+from airflow.operators.empty import EmptyOperator
+from airflow.models import Variable
 from datetime import datetime, timedelta
 
 default_args = {
@@ -8,12 +11,31 @@ default_args = {
     'retry_delay': timedelta(minutes=5),
 }
 
+def branch_task(**kwargs):
+    task_source = Variable.get("TASK_SOURCE", default_var="0")
+    if task_source == "1":
+        return "task1"
+    elif task_source == "2":
+        return "task2"
+    elif task_source == "3":
+        return "task3"
+    else:
+        return ["task1", "task2", "task3"]
+
 with DAG(
     'sudo-sequence-test',
     default_args=default_args,
     schedule_interval='@daily',
     catchup=False,
 ) as dag:
+    
+    start = EmptyOperator(task_id='start')
+    
+    branch = BranchPythonOperator(
+        task_id='branch_task',
+        python_callable=branch_task,
+        provide_context=True,
+    )
     
     task1 = BashOperator(
         task_id='task1',
@@ -46,5 +68,8 @@ with DAG(
         bash_command='echo "I am task 6, I am successful"',
     )
     
-    [task1, task2, task3] >> task4
-    task4 >> [task5, task6]
+    end = EmptyOperator(task_id='end', trigger_rule='none_failed_min_one_success')
+    
+    start >> branch
+    branch >> [task1, task2, task3] >> task4
+    task4 >> [task5, task6] >> end
