@@ -9,7 +9,7 @@ default_args = {
 }
 
 with DAG(
-    'example_dag',
+    'sudo-sequence-test',
     default_args=default_args,
     schedule_interval='@daily',
     catchup=False,
