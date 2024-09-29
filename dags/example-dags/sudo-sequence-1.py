@@ -23,7 +23,7 @@ def branch_task(**kwargs):
         return ["task1", "task2", "task3"]
 
 with DAG(
-    'sudo-sequence-test',
+    'sudo-sequence',
     default_args=default_args,
     schedule_interval='@daily',
     catchup=False,
