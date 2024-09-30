@@ -61,7 +61,7 @@ with DAG(
     task4 = BashOperator(
         task_id='task4',
         bash_command='echo "I am task 4, I am successful"',
-        trigger_rule='one_success',  # This ensures task4 runs if any of task1, task2, or task3 succeed
+        trigger_rule='all_dones',  # This ensures task4 runs if any of task1, task2, or task3 succeed
     )
     
     task5 = BashOperator(
