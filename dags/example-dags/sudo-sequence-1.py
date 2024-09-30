@@ -31,26 +31,29 @@ with DAG(
     catchup=False,
 ) as dag:
     
-    start = EmptyOperator(task_id='start')
+    #start = EmptyOperator(task_id='start')
     
-    branch = BranchPythonOperator(
-        task_id='branch_task',
-        python_callable=branch_task,
-    )
+    #branch = BranchPythonOperator(
+    #    task_id='branch_task',
+    #    python_callable=branch_task,
+    #)
     
     task1 = BashOperator(
         task_id='task1',
-        bash_command='echo "I am task 1, I am successful"',
+        #bash_command='echo "I am task 1, I am successful"',
+        bash_command='sleep 60',
     )
     
     task2 = BashOperator(
         task_id='task2',
-        bash_command='echo "I am task 2, I am successful"',
+        #bash_command='echo "I am task 2, I am successful"',
+        bash_command='sleep 120',
     )
     
     task3 = BashOperator(
         task_id='task3',
-        bash_command='echo "I am task 3, I am successful"',
+        #bash_command='echo "I am task 3, I am successful"',
+        bash_command='sleep 180',
     )
     
     no_task = EmptyOperator(task_id='no_task')
