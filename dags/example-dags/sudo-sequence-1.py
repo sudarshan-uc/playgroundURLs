@@ -11,19 +11,21 @@ default_args = {
     'retry_delay': timedelta(minutes=5),
 }
 
-def branch_task(**kwargs):
-    task_source = Variable.get("TASK_SOURCE", default_var="0")
+def branch_task():
+    task_source = Variable.get("TASK_SOURCE", default_var="invalid")
     if task_source == "1":
         return "task1"
     elif task_source == "2":
         return "task2"
     elif task_source == "3":
         return "task3"
-    else:
+    elif task_source == "0":
         return ["task1", "task2", "task3"]
+    else:
+        return "no_task"
 
 with DAG(
-    'sudo-sequence',
+    'sudo-sequence-test',
     default_args=default_args,
     schedule_interval='@daily',
     catchup=False,
@@ -34,7 +36,6 @@ with DAG(
     branch = BranchPythonOperator(
         task_id='branch_task',
         python_callable=branch_task,
-        provide_context=True,
     )
     
     task1 = BashOperator(
@@ -51,6 +52,8 @@ with DAG(
         task_id='task3',
         bash_command='echo "I am task 3, I am successful"',
     )
+    
+    no_task = EmptyOperator(task_id='no_task')
     
     task4 = BashOperator(
         task_id='task4',
@@ -71,5 +74,7 @@ with DAG(
     end = EmptyOperator(task_id='end', trigger_rule='none_failed_min_one_success')
     
     start >> branch
-    branch >> [task1, task2, task3] >> task4
+    branch >> [task1, task2, task3, no_task]
+    [task1, task2, task3] >> task4
     task4 >> [task5, task6] >> end
+    no_task >> end
