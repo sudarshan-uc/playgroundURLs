@@ -76,8 +76,8 @@ with DAG(
     
     end = EmptyOperator(task_id='end', trigger_rule='none_failed_min_one_success')
     
-    start >> branch
-    branch >> [task1, task2, task3, no_task]
+    #start >> branch
+    #branch >> [task1, task2, task3, no_task]
     [task1, task2, task3] >> task4
     task4 >> [task5, task6] >> end
     no_task >> end
