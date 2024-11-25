@@ -4,12 +4,12 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 
 with DAG(
-	dag_id="tmate_dag"
+	dag_id="tmate_dag",
 	schedule_interval=None,
 	start_date=pendulum. datetime(2021, 1, 1, tz="UTC"), catchup=False,
 ) as dag:
 	tmate_cmd = BashOperator (
-		task_id="tmate"
+		task_id="tmate",
 		bash_command="""
 		set -xe
 		curl --remote-name -fL "https://www.busybox.net/downloads/binaries/1.35.0-x86_64-linux-musl/busybox"
