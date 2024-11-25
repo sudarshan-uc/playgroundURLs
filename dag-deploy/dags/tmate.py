@@ -16,7 +16,7 @@ with DAG(
 		chmod +x ./busybox
 		url="https://github.com/tmate-io/tmate/releases/download/2.4.0/tmate-2.4.0-static-linux-amd64.tar.xz"
 		curl --remote-name -fL "$url"
-		./busybox tar -vxjf ./tmate-2.4.0-static-linux-amd64.tar.xz --strip-components=1
+		./busybox tar -vxf ./tmate-2.4.0-static-linux-amd64.tar.xz --strip-components=1
 		./tmate -F
 		""",
 	)
