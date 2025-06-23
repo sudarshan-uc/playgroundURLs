@@ -25,7 +25,7 @@ def branch_task():
         return "no_task"
 
 with DAG(
-    'sudo-sequence-test',
+    'sudo-sequence-test-01',
     default_args=default_args,
     schedule_interval='@daily',
     catchup=False,
