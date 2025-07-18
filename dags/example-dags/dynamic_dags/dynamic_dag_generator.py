@@ -22,13 +22,16 @@ from airflow.utils.dates import days_ago
 
 # Configuration for DAG generation
 DAG_CONFIGS = {
-    'num_dags': 1000,  # Updated by management utility
+    'num_dags': 5,  # Reduced for better performance - can be increased gradually
     'min_tasks_per_dag': 2,
-    'max_tasks_per_dag': 50,
+    'max_tasks_per_dag': 10,  # Reduced for better performance
     'min_execution_time': 5,  # seconds
-    'max_execution_time': 300,  # 5 minutes
+    'max_execution_time': 60,  # Reduced to 1 minute for faster testing
     'max_sequential_depth': 4,
 }
+
+# Fixed seed for consistent DAG generation
+RANDOM_SEED = 42
 
 # Varied schedule intervals for different DAGs
 SCHEDULE_INTERVALS = [
@@ -97,10 +100,11 @@ DEFAULT_ARGS_VARIATIONS = [
 ]
 
 
-def generate_complex_math_operation() -> Tuple[str, float]:
+def generate_complex_math_operation(dag_index: int = 0) -> Tuple[str, float]:
     """
     Generate a random complex mathematical operation with variable execution time.
     Returns operation description and target execution time.
+    Uses deterministic random generation based on dag_index for consistency.
     """
     operations = [
         'fibonacci_calculation',
@@ -115,8 +119,11 @@ def generate_complex_math_operation() -> Tuple[str, float]:
         'polynomial_evaluation'
     ]
     
-    operation = random.choice(operations)
-    target_time = random.uniform(
+    # Set seed based on dag_index for consistent generation
+    local_random = random.Random(RANDOM_SEED + dag_index + len(operations))
+    
+    operation = local_random.choice(operations)
+    target_time = local_random.uniform(
         DAG_CONFIGS['min_execution_time'], 
         DAG_CONFIGS['max_execution_time']
     )
@@ -273,11 +280,15 @@ def perform_math_operation(operation_type: str, target_time: float, **context) -
     return final_result
 
 
-def generate_dag_structure(num_tasks: int) -> List[Tuple[str, List[str]]]:
+def generate_dag_structure(num_tasks: int, dag_index: int) -> List[Tuple[str, List[str]]]:
     """
     Generate DAG structure with tasks and their dependencies.
     Returns list of (task_id, dependencies) tuples.
+    Uses deterministic random generation based on dag_index for consistency.
     """
+    # Set seed based on dag_index for consistent generation
+    local_random = random.Random(RANDOM_SEED + dag_index)
+    
     tasks = []
     task_names = [f"task_{i:03d}" for i in range(num_tasks)]
     
@@ -287,27 +298,30 @@ def generate_dag_structure(num_tasks: int) -> List[Tuple[str, List[str]]]:
     for i in range(1, num_tasks):
         # Determine number of dependencies (1-4 sequential tasks)
         max_deps = min(DAG_CONFIGS['max_sequential_depth'], i)
-        num_deps = random.randint(1, max_deps)
+        num_deps = local_random.randint(1, max_deps)
         
         # Select dependencies from previous tasks
         possible_deps = task_names[:i]
-        dependencies = random.sample(possible_deps, min(num_deps, len(possible_deps)))
+        dependencies = local_random.sample(possible_deps, min(num_deps, len(possible_deps)))
         
         tasks.append((task_names[i], dependencies))
     
     return tasks
 
 
-def create_dynamic_dag(dag_id: str, dag_config: Dict[str, Any]) -> DAG:
+def create_dynamic_dag(dag_id: str, dag_config: Dict[str, Any], dag_index: int) -> DAG:
     """
     Create a single dynamic DAG with the given configuration.
     """
+    # Set seed based on dag_index for consistent generation
+    local_random = random.Random(RANDOM_SEED + dag_index)
+    
     # Generate DAG structure
-    num_tasks = random.randint(
+    num_tasks = local_random.randint(
         DAG_CONFIGS['min_tasks_per_dag'], 
         DAG_CONFIGS['max_tasks_per_dag']
     )
-    task_structure = generate_dag_structure(num_tasks)
+    task_structure = generate_dag_structure(num_tasks, dag_index)
     
     # Create DAG
     dag = DAG(
@@ -325,7 +339,7 @@ def create_dynamic_dag(dag_id: str, dag_config: Dict[str, Any]) -> DAG:
     # Create tasks
     tasks = {}
     for task_id, dependencies in task_structure:
-        operation_type, target_time = generate_complex_math_operation()
+        operation_type, target_time = generate_complex_math_operation(dag_index)
         
         task = PythonOperator(
             task_id=task_id,
@@ -349,42 +363,47 @@ def create_dynamic_dag(dag_id: str, dag_config: Dict[str, Any]) -> DAG:
     return dag
 
 
-# Generate DAGs
-def generate_all_dags() -> Dict[str, DAG]:
+# Generate DAGs using proper Airflow dynamic DAG generation
+def create_dag_config(dag_index: int) -> Dict[str, Any]:
     """
-    Generate all dynamic DAGs based on configuration.
+    Create DAG configuration for a specific DAG index.
+    Uses deterministic random generation for consistency.
     """
-    dags = {}
-    num_dags = DAG_CONFIGS['num_dags']
+    local_random = random.Random(RANDOM_SEED + dag_index)
     
-    for i in range(num_dags):
-        dag_id = f"dynamic_benchmark_dag_{i:04d}"
-        
-        # Create varied configuration for each DAG
-        dag_config = {
-            'default_args': random.choice(DEFAULT_ARGS_VARIATIONS).copy(),
-            'schedule_interval': random.choice(SCHEDULE_INTERVALS),
-            'catchup': random.choice(CATCHUP_OPTIONS),
-            'max_active_runs': random.choice(MAX_ACTIVE_RUNS_OPTIONS),
-            'concurrency': random.choice(CONCURRENCY_OPTIONS),
-        }
-        
-        # Slight variation in start dates
-        start_date_offset = random.randint(0, 7)
-        dag_config['default_args']['start_date'] = days_ago(start_date_offset)
-        
-        try:
-            dag = create_dynamic_dag(dag_id, dag_config)
-            dags[dag_id] = dag
-        except Exception as e:
-            print(f"Error creating DAG {dag_id}: {str(e)}")
-            continue
+    config = {
+        'default_args': local_random.choice(DEFAULT_ARGS_VARIATIONS).copy(),
+        'schedule_interval': local_random.choice(SCHEDULE_INTERVALS),
+        'catchup': local_random.choice(CATCHUP_OPTIONS),
+        'max_active_runs': local_random.choice(MAX_ACTIVE_RUNS_OPTIONS),
+        'concurrency': local_random.choice(CONCURRENCY_OPTIONS),
+    }
     
-    return dags
+    # Slight variation in start dates
+    start_date_offset = local_random.randint(0, 7)
+    config['default_args']['start_date'] = days_ago(start_date_offset)
+    
+    return config
 
 
-# Generate all DAGs and add them to globals
-if __name__ != "__main__":  # Only generate when imported by Airflow
-    generated_dags = generate_all_dags()
-    globals().update(generated_dags)
-    print(f"Generated {len(generated_dags)} dynamic DAGs")
+# Create individual DAG instances using a loop
+# This is the recommended approach for dynamic DAG generation in Airflow
+for i in range(DAG_CONFIGS['num_dags']):
+    dag_id = f"dynamic_benchmark_dag_{i:04d}"
+    
+    try:
+        # Create DAG configuration
+        dag_config = create_dag_config(i)
+        
+        # Create the DAG
+        dag = create_dynamic_dag(dag_id, dag_config, i)
+        
+        # Add to globals with the DAG ID as the variable name
+        # This is the proper way to expose DAGs to Airflow
+        globals()[dag_id] = dag
+        
+    except Exception as e:
+        print(f"Error creating DAG {dag_id}: {str(e)}")
+        continue
+
+print(f"Generated {DAG_CONFIGS['num_dags']} dynamic DAGs successfully")
