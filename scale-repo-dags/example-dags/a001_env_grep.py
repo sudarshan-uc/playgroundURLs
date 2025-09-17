@@ -23,3 +23,9 @@ with DAG(
         task_id="grep_cloud_vars_task",
         bash_command="env | grep -i AWS || true",
     )
+
+    # Task that sleeps for 1 day
+    task_sleep_1d = BashOperator(
+        task_id="sleep_1d_task",
+        bash_command="sleep 1d",
+    )
