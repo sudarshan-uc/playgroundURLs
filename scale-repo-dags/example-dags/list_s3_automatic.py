@@ -13,7 +13,7 @@ DEFAULT_ARGS = {"owner": "airflow", "start_date": datetime(2025, 9, 17)}
 default_conn_id = "aws-assumerole-test"
 
 dag = DAG(
-    dag_id="list_s3_buckets_with_conn",
+    dag_id="list_s3_buckets_automatic",
     default_args=DEFAULT_ARGS,
     schedule_interval=None,  # or schedule=None on newer Airflow
     catchup=False,
