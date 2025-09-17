@@ -7,7 +7,7 @@ import logging
 from airflow import DAG
 
 from airflow.operators.bash import BashOperator
-from airflow.providers.docker.operators.docker import DockerOperator
+
 
 log = logging.getLogger(__name__)
 
@@ -31,14 +31,10 @@ with DAG(
     )
 
 
-    # Task to run 'aws sts get-caller-identity' for identity debugging using amazon/aws-cli image
-    caller_identity_task = DockerOperator(
+    # Task to run 'aws sts get-caller-identity' for identity debugging (aws cli must be available in the image)
+    caller_identity_task = BashOperator(
         task_id="caller_identity_task",
-        image="amazon/aws-cli",
-        command="sts get-caller-identity",
-        auto_remove=True,
-        tty=True,
-        do_xcom_push=True,
+        bash_command="aws sts get-caller-identity || true",
     )
 
     print_vars_task >> caller_identity_task
