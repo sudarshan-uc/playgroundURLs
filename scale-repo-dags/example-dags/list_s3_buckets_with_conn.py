@@ -10,15 +10,34 @@ The Airflow connection (e.g., 'ps-aws-config') should be of type 'Amazon Web Ser
     "role_arn": "arn:aws:iam::<account-id>:role/<role-name>",
     "external_id": "<optional-external-id>"
 }
+
+With Session details in extras field:
+
+{
+  "region_name": "us-east-2",
+  "role_arn": "arn:aws:iam::833664315823:role/assumerole-test-cross-account",
+  "assume_role_method": "assume_role",
+  "assume_role_kwargs": {
+    "ExternalId": "us-east-2/043672736276/gsd-rdc-01/astronomer-git-test/my-aws-test",
+    "RoleSessionName": "airflow-{{ ti.dag_id }}",
+    "DurationSeconds": 3600
+  }
+}
+
+
+
 This allows Airflow to assume the specified role in another AWS account for all AWS operators in this DAG.
 """
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from airflow.providers.amazon.aws.hooks.s3 import S3Hook
+
 from airflow.utils.trigger_rule import TriggerRule
 import uuid
 import botocore
+import boto3
+import re
+from airflow.hooks.base import BaseHook
 
 DEFAULT_ARGS = {"owner": "airflow", "start_date": datetime(2025, 9, 17)}
 
@@ -26,19 +45,62 @@ DEFAULT_ARGS = {"owner": "airflow", "start_date": datetime(2025, 9, 17)}
 
 # Use an Airflow connection with assume role parameters in 'extra' for cross-account access
 default_conn_id = "aws-assumerole-test"
-test_bucket_name = f"test-bucket-{uuid.uuid4().hex[:8]}"
 
-# Example connection 'Extra' JSON to configure cross-account assume-role access:
-# {
-#   "region_name": "ap-south-1",
-#   "role_arn": "arn:aws:iam::222222222222:role/airflow-xacct-marketing",
-#   "assume_role_method": "assume_role",
-#   "assume_role_kwargs": {
-#     "ExternalId": "your-external-id",
-#     "RoleSessionName": "airflow-{{ ti.dag_id }}",
-#     "DurationSeconds": 3600
-#   }
-# }
+
+def generate_bucket_name_fn(**context):
+    name = f"test-bucket-{uuid.uuid4().hex[:8]}"
+    print(f"Generated bucket name: {name}")
+    return name
+
+
+def make_role_session_name(context: dict) -> str:
+    """Build a sanitized RoleSessionName allowed by AWS (chars: \w+=,.@-), max 64 chars.
+
+    Uses DAG id, task id and run id (or timestamp) to make a unique name per task/run.
+    """
+    ti = context.get("ti")
+    dag_id = ti.dag_id if ti is not None else context.get("dag", {}).get("dag_id", "")
+    task_id = ti.task_id if ti is not None else context.get("task", {}).get("task_id", "")
+    run_id = (context.get("run_id") or getattr(context.get("dag_run"), "run_id", ""))
+    base = f"airflow-{dag_id}-{task_id}-{run_id}"
+    # replace disallowed chars with '-'
+    sanitized = re.sub(r"[^A-Za-z0-9+=,.@-]", "-", base)
+    # trim to 64 chars
+    return sanitized[:64]
+
+
+def get_boto3_session_from_conn(context: dict):
+    """Return a boto3.Session and region using connection extras. If role_arn present, assume role with a dynamic RoleSessionName.
+
+    The connection extras should contain 'role_arn' and optional 'assume_role_kwargs'.
+    """
+    conn = BaseHook.get_connection(default_conn_id)
+    extras = conn.extra_dejson or {}
+    region = extras.get("region_name")
+    role_arn = extras.get("role_arn")
+
+    if not role_arn:
+        # No assume-role configured — fall back to normal session
+        return boto3.Session(region_name=region), region
+
+    assume_kwargs = extras.get("assume_role_kwargs") or {}
+    if not isinstance(assume_kwargs, dict):
+        assume_kwargs = {}
+
+    # ensure RoleSessionName is dynamic and valid
+    assume_kwargs = dict(assume_kwargs)
+    assume_kwargs["RoleSessionName"] = make_role_session_name(context)
+
+    sts_client = boto3.client("sts", region_name=region)
+    resp = sts_client.assume_role(RoleArn=role_arn, **assume_kwargs)
+    creds = resp["Credentials"]
+    session = boto3.Session(
+        aws_access_key_id=creds["AccessKeyId"],
+        aws_secret_access_key=creds["SecretAccessKey"],
+        aws_session_token=creds["SessionToken"],
+        region_name=region,
+    )
+    return session, region
 
 dag = DAG(
     dag_id="list_s3_buckets_with_conn",
@@ -52,8 +114,8 @@ dag = DAG(
 
 # List all S3 buckets using the connection (with assume role if configured)
 def list_buckets_fn(**context):
-    hook = S3Hook(aws_conn_id=default_conn_id)
-    client = hook.get_conn()
+    session, region = get_boto3_session_from_conn(context)
+    client = session.client("s3", region_name=region)
     resp = client.list_buckets()
     names = [b["Name"] for b in resp.get("Buckets", [])]
     print("S3 buckets:", names)
@@ -68,17 +130,18 @@ list_buckets = PythonOperator(
 
 # Create a test bucket in the assumed role's account
 def create_bucket_fn(**context):
-    hook = S3Hook(aws_conn_id=default_conn_id)
-    client = hook.get_conn()
-    region = getattr(client.meta, "region_name", None)
+    ti = context["ti"]
+    bucket_name = ti.xcom_pull(task_ids="generate_bucket_name_task")
+    session, region = get_boto3_session_from_conn(context)
+    client = session.client("s3", region_name=region)
     try:
         if region and region != "us-east-1":
-            client.create_bucket(Bucket=test_bucket_name, CreateBucketConfiguration={"LocationConstraint": region})
+            client.create_bucket(Bucket=bucket_name, CreateBucketConfiguration={"LocationConstraint": region})
         else:
-            client.create_bucket(Bucket=test_bucket_name)
-        print(f"Created bucket: {test_bucket_name} in region {region}")
+            client.create_bucket(Bucket=bucket_name)
+        print(f"Created bucket: {bucket_name} in region {region}")
     except client.exceptions.BucketAlreadyOwnedByYou:
-        print(f"Bucket {test_bucket_name} already owned by you")
+        print(f"Bucket {bucket_name} already owned by you")
 
 
 create_bucket = PythonOperator(
@@ -90,10 +153,12 @@ create_bucket = PythonOperator(
 
 # Write an object to the test bucket
 def put_object_fn(**context):
-    hook = S3Hook(aws_conn_id=default_conn_id)
-    client = hook.get_conn()
-    client.put_object(Bucket=test_bucket_name, Key="test.txt", Body="This is a test file.")
-    print(f"Wrote test object to {test_bucket_name}/test.txt")
+    ti = context["ti"]
+    bucket_name = ti.xcom_pull(task_ids="generate_bucket_name_task")
+    session, region = get_boto3_session_from_conn(context)
+    client = session.client("s3", region_name=region)
+    client.put_object(Bucket=bucket_name, Key="test.txt", Body="This is a test file.")
+    print(f"Wrote test object to {bucket_name}/test.txt")
 
 
 put_object = PythonOperator(
@@ -104,18 +169,20 @@ put_object = PythonOperator(
 
 
 def delete_bucket_fn(**context):
-    hook = S3Hook(aws_conn_id=default_conn_id)
-    client = hook.get_conn()
+    ti = context["ti"]
+    bucket_name = ti.xcom_pull(task_ids="generate_bucket_name_task")
+    session, region = get_boto3_session_from_conn(context)
+    client = session.client("s3", region_name=region)
     # delete all objects first
     try:
-        objs = client.list_objects_v2(Bucket=test_bucket_name)
+        objs = client.list_objects_v2(Bucket=bucket_name)
         if objs.get("KeyCount", 0) > 0:
             to_delete = {"Objects": [{"Key": o["Key"]} for o in objs.get("Contents", [])]}
-            client.delete_objects(Bucket=test_bucket_name, Delete=to_delete)
-        client.delete_bucket(Bucket=test_bucket_name)
-        print(f"Deleted bucket: {test_bucket_name}")
+            client.delete_objects(Bucket=bucket_name, Delete=to_delete)
+        client.delete_bucket(Bucket=bucket_name)
+        print(f"Deleted bucket: {bucket_name}")
     except botocore.exceptions.ClientError as e:
-        print(f"Error deleting bucket {test_bucket_name}: {e}")
+        print(f"Error deleting bucket {bucket_name}: {e}")
 
 
 delete_bucket = PythonOperator(
@@ -125,4 +192,10 @@ delete_bucket = PythonOperator(
     dag=dag,
 )
 
-list_buckets >> create_bucket >> put_object >> delete_bucket
+generate_bucket = PythonOperator(
+    task_id="generate_bucket_name_task",
+    python_callable=generate_bucket_name_fn,
+    dag=dag,
+)
+
+list_buckets >> generate_bucket >> create_bucket >> put_object >> delete_bucket
