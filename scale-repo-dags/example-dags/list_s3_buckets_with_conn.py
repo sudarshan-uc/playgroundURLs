@@ -14,17 +14,18 @@ This allows Airflow to assume the specified role in another AWS account for all 
 """
 
 from airflow import DAG
-
-from airflow.providers.amazon.aws.operators.s3 import S3ListBucketsOperator, S3CreateBucketOperator, S3DeleteBucketOperator, S3PutObjectOperator
+from airflow.operators.python import PythonOperator
+from airflow.providers.amazon.aws.hooks.s3 import S3Hook
 from airflow.utils.trigger_rule import TriggerRule
 import uuid
+import botocore
 
 DEFAULT_ARGS = {"owner": "airflow", "start_date": datetime(2025, 9, 17)}
 
 
 
 # Use an Airflow connection with assume role parameters in 'extra' for cross-account access
-default_conn_id = "ps-aws-config"
+default_conn_id = "aws-assumerole-test"
 test_bucket_name = f"test-bucket-{uuid.uuid4().hex[:8]}"
 
 # Example connection 'Extra' JSON to configure cross-account assume-role access:
@@ -50,38 +51,76 @@ dag = DAG(
 
 
 # List all S3 buckets using the connection (with assume role if configured)
-list_buckets = S3ListBucketsOperator(
+def list_buckets_fn(**context):
+    hook = S3Hook(aws_conn_id=default_conn_id)
+    client = hook.get_conn()
+    resp = client.list_buckets()
+    names = [b["Name"] for b in resp.get("Buckets", [])]
+    print("S3 buckets:", names)
+
+
+list_buckets = PythonOperator(
     task_id="list_s3_buckets_task",
-    aws_conn_id=default_conn_id,
+    python_callable=list_buckets_fn,
     dag=dag,
 )
 
 
 # Create a test bucket in the assumed role's account
-create_bucket = S3CreateBucketOperator(
+def create_bucket_fn(**context):
+    hook = S3Hook(aws_conn_id=default_conn_id)
+    client = hook.get_conn()
+    region = getattr(client.meta, "region_name", None)
+    try:
+        if region and region != "us-east-1":
+            client.create_bucket(Bucket=test_bucket_name, CreateBucketConfiguration={"LocationConstraint": region})
+        else:
+            client.create_bucket(Bucket=test_bucket_name)
+        print(f"Created bucket: {test_bucket_name} in region {region}")
+    except client.exceptions.BucketAlreadyOwnedByYou:
+        print(f"Bucket {test_bucket_name} already owned by you")
+
+
+create_bucket = PythonOperator(
     task_id="create_test_bucket_task",
-    bucket_name=test_bucket_name,
-    aws_conn_id=default_conn_id,
+    python_callable=create_bucket_fn,
     dag=dag,
 )
 
 
 # Write an object to the test bucket
-put_object = S3PutObjectOperator(
+def put_object_fn(**context):
+    hook = S3Hook(aws_conn_id=default_conn_id)
+    client = hook.get_conn()
+    client.put_object(Bucket=test_bucket_name, Key="test.txt", Body="This is a test file.")
+    print(f"Wrote test object to {test_bucket_name}/test.txt")
+
+
+put_object = PythonOperator(
     task_id="put_object_in_test_bucket_task",
-    bucket_name=test_bucket_name,
-    key="test.txt",
-    data="This is a test file.",
-    aws_conn_id=default_conn_id,
+    python_callable=put_object_fn,
     dag=dag,
 )
 
 
-# Delete the test bucket (after object is written)
-delete_bucket = S3DeleteBucketOperator(
+def delete_bucket_fn(**context):
+    hook = S3Hook(aws_conn_id=default_conn_id)
+    client = hook.get_conn()
+    # delete all objects first
+    try:
+        objs = client.list_objects_v2(Bucket=test_bucket_name)
+        if objs.get("KeyCount", 0) > 0:
+            to_delete = {"Objects": [{"Key": o["Key"]} for o in objs.get("Contents", [])]}
+            client.delete_objects(Bucket=test_bucket_name, Delete=to_delete)
+        client.delete_bucket(Bucket=test_bucket_name)
+        print(f"Deleted bucket: {test_bucket_name}")
+    except botocore.exceptions.ClientError as e:
+        print(f"Error deleting bucket {test_bucket_name}: {e}")
+
+
+delete_bucket = PythonOperator(
     task_id="delete_test_bucket_task",
-    bucket_name=test_bucket_name,
-    aws_conn_id=default_conn_id,
+    python_callable=delete_bucket_fn,
     trigger_rule=TriggerRule.ALL_DONE,
     dag=dag,
 )
