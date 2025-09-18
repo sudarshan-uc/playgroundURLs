@@ -6,11 +6,28 @@ from datetime import datetime
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-try:
+try:  # pragma: no cover - optional in some test envs
     import boto3
     from botocore.exceptions import BotoCoreError, ClientError
-except Exception:  # pragma: no cover - boto3 may not be installed in test env
+except Exception:  # noqa: BLE001
     boto3 = None
+
+AWS_CONN_ID = "aws-assumerole-test"
+
+
+def get_aws_client(service_name: str):
+    """Return a boto3 client for service using the Airflow connection.
+
+    Requires apache-airflow-providers-amazon package installed.
+    """
+    try:
+        from airflow.providers.amazon.aws.hooks.base_aws import AwsBaseHook
+    except Exception as exc:  # noqa: BLE001
+        raise RuntimeError(
+            "Install 'apache-airflow-providers-amazon' to use the AWS connection."
+        ) from exc
+    hook = AwsBaseHook(aws_conn_id=AWS_CONN_ID, client_type=service_name)
+    return hook.get_client_type(service_name)
 
 log = logging.getLogger(__name__)
 
@@ -23,8 +40,7 @@ def check_boto3():
 
 
 def get_caller_identity(**_context) -> dict:
-    check_boto3()
-    sts = boto3.client("sts")
+    sts = get_aws_client("sts")
     try:
         resp = sts.get_caller_identity()
         log.info("STS get-caller-identity: %s", resp)
@@ -35,8 +51,7 @@ def get_caller_identity(**_context) -> dict:
 
 
 def list_s3_buckets(**_context) -> list:
-    check_boto3()
-    s3 = boto3.client("s3")
+    s3 = get_aws_client("s3")
     try:
         resp = s3.list_buckets()
         buckets = [b.get("Name") for b in resp.get("Buckets", [])]
