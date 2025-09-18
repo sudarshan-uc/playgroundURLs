@@ -4,21 +4,13 @@ import logging
 from datetime import datetime
 
 from airflow import DAG
+from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 
 try:  # pragma: no cover - optional in some test envs
     import boto3
-    from botocore.exceptions import BotoCoreError, ClientError
 except Exception:  # noqa: BLE001
     boto3 = None
-
-from __future__ import annotations
-
-from datetime import datetime
-
-from airflow import DAG
-from airflow.operators.bash import BashOperator
-from airflow.operators.python import PythonOperator
 
 AWS_CONN_ID = "aws-assumerole-test"
 
