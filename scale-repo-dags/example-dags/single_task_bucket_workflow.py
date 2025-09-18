@@ -85,7 +85,7 @@ def workflow_task(**context):
 
     # sleep 15 minutes to test token expiry
     print("Sleeping 15 minutes")
-    time.sleep(15 * 60)
+    time.sleep(30 * 60)
 
     # attempt second write with same session (no refresh)
     now2 = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
@@ -98,7 +98,7 @@ def workflow_task(**context):
 
     # sleep another 30 minutes
     print("Sleeping 30 minutes")
-    time.sleep(30 * 60)
+    time.sleep(40 * 60)
 
     # list and delete
     try:

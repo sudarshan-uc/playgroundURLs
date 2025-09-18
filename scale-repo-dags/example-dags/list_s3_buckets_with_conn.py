@@ -103,7 +103,7 @@ def get_boto3_session_from_conn(context: dict):
     return session, region
 
 dag = DAG(
-    dag_id="list_s3_buckets_manually"
+    dag_id="list_s3_buckets_manually",
     default_args=DEFAULT_ARGS,
     schedule_interval=None,
     catchup=False,

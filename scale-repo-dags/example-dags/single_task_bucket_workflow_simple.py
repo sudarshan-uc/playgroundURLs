@@ -37,7 +37,7 @@ def workflow_simple(**context):
 
     # sleep 15 minutes
     print("Sleeping 15 minutes")
-    time.sleep(15 * 60)
+    time.sleep(30 * 60)
 
     now2 = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
     key2 = f"file-{now2}.txt"
@@ -46,7 +46,7 @@ def workflow_simple(**context):
 
     # sleep 30 minutes
     print("Sleeping 30 minutes")
-    time.sleep(30 * 60)
+    time.sleep(40 * 60)
 
     resp = client.list_objects_v2(Bucket=bucket_name)
     contents = [o["Key"] for o in resp.get("Contents", [])]
