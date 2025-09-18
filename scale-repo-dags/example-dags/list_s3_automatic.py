@@ -44,6 +44,8 @@ def create_bucket_fn(**context):
     client = hook.get_conn()
     region = getattr(client.meta, "region_name", None)
     bucket = _bucket_name(context)
+    # Push the bucket name so downstream tasks reuse the same name
+    context['ti'].xcom_push(key='bucket_name', value=bucket)
     try:
         if region and region != "us-east-1":
             client.create_bucket(Bucket=bucket, CreateBucketConfiguration={"LocationConstraint": region})
@@ -64,7 +66,10 @@ create_bucket = PythonOperator(
 def put_object_fn(**context):
     hook = S3Hook(aws_conn_id=default_conn_id)
     client = hook.get_conn()
-    bucket = _bucket_name(context)
+    # Pull the bucket name created earlier to ensure all tasks use same bucket
+    bucket = context['ti'].xcom_pull(key='bucket_name', task_ids='create_test_bucket_task')
+    if not bucket:
+        raise RuntimeError('Bucket name not found in XCom from create_test_bucket_task')
     client.put_object(Bucket=bucket, Key="test.txt", Body="This is a test file.")
     print(f"Wrote test object to {bucket}/test.txt")
 
@@ -77,7 +82,11 @@ put_object = PythonOperator(
 def delete_bucket_fn(**context):
     hook = S3Hook(aws_conn_id=default_conn_id)
     client = hook.get_conn()
-    bucket = _bucket_name(context)
+    # Pull the bucket name created earlier to ensure we delete the same bucket
+    bucket = context['ti'].xcom_pull(key='bucket_name', task_ids='create_test_bucket_task')
+    if not bucket:
+        print('Bucket name not found in XCom; skipping delete')
+        return
     try:
         # Delete objects (simple, non-versioned cleanup)
         objs = client.list_objects_v2(Bucket=bucket)
